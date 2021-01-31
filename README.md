@@ -1,191 +1,84 @@
-# Mini Project: Discord Moderation & Music BOT
+# Music-bot
+A complete code to download for a music bot. Using a module (discord-player) 🎧
 
-## Date: 25 - Aug - 2020
+Looking for a code for a music bot ? This fully open source code is made for your project !
 
-### Tech-Stack
+If you need help with this project, to get support faster you can join the help server by just clicking [here](https://discord.gg/5cGSYV8ZZj).
 
-- NodeJS v14.7
-- Discord.js v12
-- dotenv : store variable `process.env.variable_name`
-- ytdl-core : Convert youtube link to audio
-- opusscript
-- ffmpeg-static : Need FFMPEG For Any Music Bot To Work
-- moment : time format
-- ms : convert string seconds to number: Input: 100s > `numbers`
+### ⚡ Installation
 
-### Screenshot
+Well, let's start by downloading the code.
+Go to the folder `config` then the file `bot.js`.
+For the bot to be able to start, please complete the file with your credentials as follows :
 
-<img src="https://i.imgur.com/vSPWEkd.png" />
-
-### Functions
-
-**MODERATION BOT:**
-
-1. Kick : `$kick @[user_name] [reason-reason]`
-
-- \$kick @Rafen spamming
-
-2. Ban : `$ban @[user_name] [reason-reason]`
-
-- \$ban @Rafen spamming
-
-3. Soft ban : `$softban @[user_name] [reason-reason]` - default: 1 day
-
-- \$softban @Rafen spamming
-
-4. Temp ban: `$tempban @[user_name] [reason-reason] [seconds]s`
-
-- \$tempban @Rafen Breaking-rule 200s
-
-5. Mute : `$mute @[user_name] [reason-reason] [seconds]s`
-
-- \$mute @Rafen spamming 100s
-
-6. UnMute: `$unmute @[user_name] [reason-reason]`
-
-- \$unmute @Rafen ccc
-
-7. Reaction to set Role:
-
-- Reaction :watermelon: icon to add `Verified` role
-
-8. Send text in bot-command channel, BOT send announcements to specify channel: `$announce [text]`
-
-- \$announce Hello everybody
-
-**MUSIC BOT:**
-
-1. Play: `$play [youtube_url]`
-
-- \$play https://www.youtube.com/watch?v=gwpud7f_nDk
-
-2. Add music to queue: `$play [youtube_url]`
-
-- \$play https://www.youtube.com/watch?v=gwpud7f_nDk
-
-3. Stop: `$stop`
-4. Skip: `$skip`
-5. Pause: `$pause`
-6. Resume: `$resume`
-7. change Volume : `$volume [1-5]` - default: 5
-
-- \$volume 3
-
-8. Now Playing: `$nowplaying`
-9. check song queue: `$queue`
-
-### Plan Of Action
-
-- Project Setup
-- Creating Discord Application
-- Adding the Bot to our Discord Server
-- Logging the bot In Discord Server
-- Basic Events
-- Ready Event
-- Message Events
-- Bot Responses
-- Basic Chat Commands
-- Kick Command
-- Ban Command
-- Message Reactions & Reaction Roles
-- Announce command - Webhooks
-- Play command
-- Stop command
-- Create Queue system
-- Add song to queue
-- Skip command
-- Pause command
-- Resume command
-- change Volume command
-- NowPlaying command
-- check song queue command
-- Refactor
-  - Kick with new logic
-  - Ban with new logic
-- Soft Ban command
-- Mute command
-- UnMute command
-- Temp Ban command
-
-### After this project
-
-Next Steps:
-
-- Music is playing but response too longgggg 😂
-- Add youtube search function
-- Add/Remove Role
-- Create/Delete Role
-- Create/Delete Channel
-- Refactor code by split specify function in specify folder
-
-### Directory Structure
-
-```
-.
-├── package.json
-├── package-lock.json
-├── README.md
-├── .env
-└── src
-    └── bot.js
-```
-
-### Set up
-
-1. Clone repo to your computer:
-
-```
-git clone https://github.com/tinspham209/discord-bot.git
-```
-
-2. Install dependencies.
-
-```
-npm install
-```
-
-3. **Adding the Bot to discord server**
-
-- https://discord.com/developers/applications > General Information > `CLIENT_ID`
-- And type URL in your browser: https://discord.com/api/oauth2/authorize?client_id=`CLIENT_ID`&scope=bot
-
-4. **Update variable in `.env`**
+- For emojis
 
 ```js
-// .env
-DISCORDJS_BOT_TOKEN=
-WEBHOOK_ID=
-WEBHOOK_TOKEN=
-REACTION_MESSAGE_ID=
-ROLE_NAME=
-ROLE_ID=
-ROLE_MUTE_ID=
+emojis: {
+    off: ':x:',
+    error: ':warning:',
+    queue: ':bar_chart:',
+    music: ':musical_note:',
+    success: ':white_check_mark:',
+}
 ```
 
-- `DISCORDJS_BOT_TOKEN`:
-  - https://discord.com/developers/applications ~> BOT > TOKEN
-- Setting Webhooks in specify channel that you want BOT send announcements
-  - Setting text channel > Integrations > New Webhook > Copy Webhook URL
-  - Get `WEBHOOK_ID` & `WEBHOOK_TOKEN` in URL
-  - https://discordapp.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN
-- `REACTION_MESSAGE_ID` : ID of comment that you want to set function reaction to set role
-- `ROLE_NAME` = icon that you want user react to set Role - example: `:watermelon:`
-- `ROLE_ID` = ID of roles that you want to set in server setting > roles
-- `ROLE_MUTE_ID` : Role ID that is already mute in server setting > roles
+- For configuration
 
-5. If you want to add more reaction roles. You need to update code at `src/bot.js` in function `messageReactionAdd` &`messageReactionRemove`
-
-- Add new variable in `.env`. Example: `ROLE_NAME_2` & `ROLE_ID_2`
-- Add more case at `switch case` on each functions
-
-6. **Run in Production**
-
-```
-npm start
+```js
+discord: {
+    token: 'TOKEN',
+    prefix: 'PREFIX',
+    activity: 'ACTIVITY',
+}
 ```
 
-7. **Or run in development: nodemon**
+- `token`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section.
+- `prefix`, the prefix that will be set to use the bot.
+- `activity`, the activity of the bot.
+
+In the console, type `npm install` to install all dependencies.
+
+- To start the bot :
 
 ```
-npm run dev
+#With Node
+node index.js
+
+#With pm2
+pm2 start index.js --name "MusicBot"
 ```
+
+All you have to do is turn on your bot !
+
+### 🎵 Music commands
+
+```
+play <name>, play music in a voice channel.
+pause, pause the current music.
+resume, puts the current music back on.
+queue, see the next songs.
+clear-queue, delete the next music.
+shuffle, to mix the queue.
+nowplaying, see music in progress.
+loop, to enable or disable the repeat function.
+volume <1 - 100>, change the volume.
+skip, skip to next music.
+stop, stop all music.
+filter <filter>, add / remove filter.
+w-filters, see filters.
+```
+
+### 💡 General commands
+
+```
+ping, see the bot latency.
+help, see the list of available commands.
+debug, see number of voice connections.
+```
+
+### 🏓 Utilities (to change the code)
+
+Find all the functions available on the official code [right here](https://github.com/Androz2091/discord-player).
+
+This is used with [discord.js](https://www.npmjs.com/package/discord.js) and [discord-player](https://www.npmjs.com/package/discord-player).
